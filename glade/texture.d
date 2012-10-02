@@ -21,6 +21,8 @@ import std.conv;
 
 import derelict.opengl3.gl3;
 
+import glade.image;
+
 version(OpenGL4){
     enum StencilTextureMode {
         DepthComponent = GL_DEPTH_COMPONENT,
@@ -272,3 +274,4 @@ final class TextureLayer {
 final class Texture {
     GLuint _id;
 }
+

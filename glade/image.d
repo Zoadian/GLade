@@ -6,6 +6,8 @@ module glade.image;
 
 import derelict.opengl3.gl3;
 
+alias uint[2] Size;
+
 struct Color
 {
 private:

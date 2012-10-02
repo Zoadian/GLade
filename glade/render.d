@@ -146,108 +146,108 @@ int maxColorBuffers()
 }
 
 
-//##################### DEPRECATED BELOW
+//~ //##################### DEPRECATED BELOW
 
 
-interface IRenderer
-{
-    void render(IRenderTarget target, SceneNode rootNode, Camera camera);
-}
+//~ interface IRenderer
+//~ {
+    //~ void render(IRenderTarget target, SceneNode rootNode, Camera camera);
+//~ }
 
 
-interface IRenderTarget
-{
-    void clear();
-    void show();
-}
+//~ interface IRenderTarget
+//~ {
+    //~ void clear();
+    //~ void show();
+//~ }
 
 
-final class DeferredRenderer : IRenderer
-{
-public:
-    this()
-    {}
+//~ final class DeferredRenderer : IRenderer
+//~ {
+//~ public:
+    //~ this()
+    //~ {}
     
-public:
-    void render(IRenderTarget target, SceneNode rootNode, Camera camera)
-    {
-        target.clear();
-        target.show();
-    }
+//~ public:
+    //~ void render(IRenderTarget target, SceneNode rootNode, Camera camera)
+    //~ {
+        //~ target.clear();
+        //~ target.show();
+    //~ }
     
-    void renderAttributeStage()
-    {}
+    //~ void renderAttributeStage()
+    //~ {}
     
-    void renderDeferredStage()
-    {}
-}
+    //~ void renderDeferredStage()
+    //~ {}
+//~ }
 
-class DeferredRenderTarget
-{	    
-    struct RenderTargetPart
-    {
-        enum BufferType 
-        {
-            Depth,
-            Stencil,
-            Color,
-            DepthTexture
-        }
+//~ class DeferredRenderTarget
+//~ {	    
+    //~ struct RenderTargetPart
+    //~ {
+        //~ enum BufferType 
+        //~ {
+            //~ Depth,
+            //~ Stencil,
+            //~ Color,
+            //~ DepthTexture
+        //~ }
         
-        BufferType type;
-    }
+        //~ BufferType type;
+    //~ }
     
-private:
-    GLuint _fbo;
-    Texture _depthBuffer;
-    Texture[] _colorBuffers;
-    bool _isInitialised;
+//~ private:
+    //~ GLuint _fbo;
+    //~ Texture _depthBuffer;
+    //~ Texture[] _colorBuffers;
+    //~ bool _isInitialised;
 
-public:
-    this()
-    {     
-    }
+//~ public:
+    //~ this()
+    //~ {     
+    //~ }
     
-    ~this()
-    {        
-        if(this._fbo)
-            glDeleteFramebuffers(1, &this._fbo);
-    }
+    //~ ~this()
+    //~ {        
+        //~ if(this._fbo)
+            //~ glDeleteFramebuffers(1, &this._fbo);
+    //~ }
     
-public:    
-    void init(RenderTargetPart[] renderTargetParts)
-    {        
-        assert(!this._isInitialised);
-        // Create the Framebuffer
-        glGenFramebuffers(1, &this._fbo); 
-        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this._fbo);
-        scope(exit){ glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0); } 
+//~ public:    
+    //~ void init(RenderTargetPart[] renderTargetParts)
+    //~ {        
+        //~ assert(!this._isInitialised);
+        //~ // Create the Framebuffer
+        //~ glGenFramebuffers(1, &this._fbo); 
+        //~ glBindFramebuffer(GL_DRAW_FRAMEBUFFER, this._fbo);
+        //~ scope(exit){ glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0); } 
         
-        foreach(i, target; renderTargetParts)
-        {
-            final switch(target.type)
-            {
-            case RenderTargetPart.BufferType.Depth:
-                //TODO:
-                break;
-            case RenderTargetPart.BufferType.Stencil:
-                //TODO:
-                break;
-            case RenderTargetPart.BufferType.Color:
-                //TODO:
-                break;
-            case RenderTargetPart.BufferType.DepthTexture:
-                //TODO:
-                break;
-            }
-        }
-        this._isInitialised = true;
-    }
+        //~ foreach(i, target; renderTargetParts)
+        //~ {
+            //~ final switch(target.type)
+            //~ {
+            //~ case RenderTargetPart.BufferType.Depth:
+                //~ //TODO:
+                //~ break;
+            //~ case RenderTargetPart.BufferType.Stencil:
+                //~ //TODO:
+                //~ break;
+            //~ case RenderTargetPart.BufferType.Color:
+                //~ //TODO:
+                //~ break;
+            //~ case RenderTargetPart.BufferType.DepthTexture:
+                //~ //TODO:
+                //~ break;
+            //~ }
+        //~ }
+        //~ this._isInitialised = true;
+    //~ }
 
-private:
+//~ private:
     
-    @property void targets(size_t[] targets)
-    {
+    //~ @property void targets(size_t[] targets)
+    //~ {
         
-    }
-}
+    //~ }
+//~ }
